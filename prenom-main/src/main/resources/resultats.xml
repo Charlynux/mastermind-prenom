@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listeResultBean>
+	<resultat>
+		<prenom>THOMAS</prenom>
+		<malPlaces>2</malPlaces>
+	</resultat>
+	<resultat>
+		<prenom>DAMIEN</prenom>
+		<malPlaces>2</malPlaces>
+	</resultat>
+	<resultat>
+		<prenom>XAVIER</prenom>
+		<malPlaces>2</malPlaces>
+	</resultat>
+	<resultat>
+		<prenom>ADRIEN</prenom>
+		<malPlaces>2</malPlaces>
+	</resultat>
+</listeResultBean>
