@@ -1,7 +1,9 @@
 (ns mastermind
   (:require [clojure.set :as set]
             [clojure.java.io :as io]
-            [clojure.xml :as xml]))
+            [clojure.xml :as xml]
+            [mastermind.logic :as logic]
+            [clojure.core.logic :refer [run* membero all and*]]))
 
 (defn calculate-common-letters [a-word b-word]
   (count (set/intersection (set a-word) (set b-word))))
@@ -48,3 +50,25 @@
    (fn [prenoms resultat] (filter #(match? % resultat) prenoms))
    prenoms
    resultats))
+
+(defn string->ints [s] (map int s))
+(defn ints->string [xs] (apply str (map char xs)))
+
+(comment
+  (ints->string (string->ints "ABCDE")))
+
+(defn result->rule [solution {:keys [prenom malPlaces bienPlaces]
+                              :or {malPlaces 0, bienPlaces 0}}]
+  (let [guess (string->ints prenom)]
+    (all
+     (logic/count-correct-places solution guess bienPlaces)
+     (logic/count-wrong-places solution guess malPlaces))))
+
+(let [prenoms (parse-prenoms (read-prenoms))
+      resultats (parse-results (read-results))
+      solutions (run* [prenom]
+                  (membero prenom (map string->ints prenoms))
+
+                  (and*
+                   (map #(result->rule prenom %) resultats)))]
+  (set (map ints->string solutions)))
