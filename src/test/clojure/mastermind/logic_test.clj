@@ -52,3 +52,19 @@
   (is (= (list 0)
          (run* [n]
            (count-wrong-places [0 1] [0 1] n)))))
+
+(deftest count-wrong-solution-BUG
+  (is (= (list 3)
+         (run* [n]
+           (count-wrong-places
+            [1 0 2]
+            [2 3 1]
+            n)))))
+
+(deftest count-wrong-solution-BUG
+  (is (= (list 4)
+         (run* [n]
+           (count-wrong-places
+            '(84 72 79 77 65 83)
+            '(75 79 83 84 73 65)
+            n)))))

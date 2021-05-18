@@ -37,7 +37,7 @@
                      (conde
                       [(== a b)]
                       [(nonmembero b solution)])
-                     (count-wrong-places s-tail g-tail n))))]
+                     (count-wrong-recur s-tail g-tail n))))]
     (count-wrong-recur solution guess n)))
 
 (comment
@@ -54,3 +54,8 @@
       (count-correct-places solution [1 3 4 2] 2)
       (count-wrong-places solution [1 3 4 2] 2)))
   )
+
+(run* [q]
+  (conde
+   [(== q 1)]
+   [(== q 1)]))
